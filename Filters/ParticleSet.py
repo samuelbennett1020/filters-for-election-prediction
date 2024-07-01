@@ -10,7 +10,6 @@ class ParticleSet:
     @classmethod
     def create_gaussian_particles(cls, mean: np.array, std: np.array, N: int):
         particles = np.random.multivariate_normal(mean, np.diag(std), size=N)
-        #particles[:, 2] %= 2 * np.pi
         return cls(particles, N)
 
     @classmethod
@@ -19,7 +18,6 @@ class ParticleSet:
         particles = np.empty((dim, N))
         for idx, bound in enumerate(bounds):
             particles[idx] = np.random.uniform(bound[0], bound[1], size=N)
-        #particles[:, 2] %= 2 * np.pi
         return cls(particles, N)
 
     def get_estimate(self):

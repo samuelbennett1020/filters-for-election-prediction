@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from KF_Election.Filters.ParticleSet import ParticleSet
-from KF_Election.Filters.SIRFilter import SIRParticleFilter
-from KF_Election.DataStore import ParticleDataStore
-from KF_Election.Utils import read_election_data
-from KF_Election.Filters.Resamplers import StratifiedResampler
+from Filters.ParticleSet import ParticleSet
+from Filters.SIRFilter import SIRParticleFilter
+from Utils.DataStore import ParticleDataStore
+from Utils.Utils import read_election_data
+from Filters.Resamplers import StratifiedResampler
 
 
 def run_example_pf(N, party):
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     for party in ['Lab', 'Con', 'LD', 'BXP/Reform', 'Green']:
         data_store = run_example_pf(N=1_000, party=party)
         data_store.plot_political(plot_params=plot_params, ax=ax, party=party)
-        #data_store.plot_colour(ax, party)
+        #data_store.plot_political_with_density(ax, party)
 
     plt.legend()
     plt.show()

@@ -34,12 +34,18 @@ def get_time_array(df):
     return time_array
 
 
-def read_election_data(party: str, file: str = "Data/NationalVotingIntention2019.csv"):
+def read_election_data(party: str, data_type: str = None, year: str = None):
     dirname = os.path.dirname(__file__)
-    filename = os.path.join(dirname, file)
 
-    with open(filename, encoding='unicode_escape') as file:
-        df = pd.DataFrame(pd.read_csv(file))
+    if None in [data_type, year]:
+        fp = '../Data/NationalVotingIntention2019.csv'
+    else:
+        fp = f'../Data/{data_type}{year}.csv'
+
+    filename = os.path.join(dirname, fp)
+
+    with open(filename, encoding='unicode_escape') as f:
+        df = pd.DataFrame(pd.read_csv(f))
 
     df_reduced = df[[party, 'Unnamed: 3']]
     df_reduced = df_reduced.dropna()

@@ -1,7 +1,7 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
-from KF_Election.Filters.ParticleSet import ParticleSet
+from Filters.ParticleSet import ParticleSet
 
 
 class Resampler(ABC):
@@ -105,7 +105,7 @@ class SimpleResampler(Resampler):
     def _resample_method(cls, weights: np.array) -> np.array:
         N = len(weights)
         cumulative_sum = np.cumsum(weights)
-        cumulative_sum[-1] = 1. # avoid round-off error
+        cumulative_sum[-1] = 1.  # avoid round-off error
         indexes = np.searchsorted(cumulative_sum, np.random.random(N))
 
         return indexes

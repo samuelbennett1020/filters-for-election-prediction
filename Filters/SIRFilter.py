@@ -1,14 +1,14 @@
 import scipy.stats
 import numpy as np
 
-from KF_Election.Filters.ParticleSet import ParticleSet
-from KF_Election.Filters.Resamplers import Resampler
+from Filters.ParticleSet import ParticleSet
+from Filters.Resamplers import Resampler
 
 
 class SIRParticleFilter:
     # Sequential Importance Resampling Filter
 
-    def __init__(self, resampler: Resampler):
+    def __init__(self, resampler: type(Resampler)):
         self.resampler = resampler
 
     def predict(self, particles, dt, q):

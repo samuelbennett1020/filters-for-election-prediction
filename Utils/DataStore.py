@@ -1,15 +1,14 @@
 from copy import deepcopy
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib as mpl
 
-from KF_Election.Filters.ParticleSet import ParticleSet
+from Filters.ParticleSet import ParticleSet
 
 # COLOURS
 RED = np.array([255, 0, 0]) / 255
 BLUE = np.array([0, 0, 255]) / 255
 ORANGE = np.array([255, 140, 0]) / 255
-PURPLE = np.array([128,0,128])/255
+PURPLE = np.array([128, 0, 128])/255
 GREEN = np.array([0, 255, 0]) / 255
 LIGHT_BLUE = np.array([0, 255, 255]) / 255
 
@@ -100,15 +99,6 @@ class ParticleDataStore(DataStore):
             ax.scatter([time]*len(particle_set), particle_set.particles[:, 0], alpha=0.01)
             ax.scatter([time], mu[0], marker='s', color='r')
 
-    def plot_colour(self, ax=None, party: str = None, **kwargs):
-
-        x_data, y_data, weights = np.array([]), np.array([]), np.array([])
-        for particle_set, time in zip(self.particles, self.times):
-            x_data = np.append(x_data, np.array([time]*len(particle_set)))
-            y_data = np.append(y_data, particle_set.particles[:, 0])
-            weights = np.append(weights, particle_set.weights)
-        ax.hist2d(x_data, y_data, weights=weights, cmap=self.party_to_mpl_colormap[party], cmin=10/len(self.particles[0]),
-                  bins=[np.array(self.times), np.linspace(0, 60, 1_000)])
 
     def plot_2d(self, timestep: int = 0, ax=None, faint: bool = False):
         if ax is None:
@@ -150,3 +140,13 @@ class ParticleDataStore(DataStore):
         ax.set_ylim(0)
 
         ax.set_ylabel('Vote Share')
+
+    def plot_political_with_density(self, ax, party: str = None):
+
+        x_data, y_data, weights = np.array([]), np.array([]), np.array([])
+        for particle_set, time in zip(self.particles, self.times):
+            x_data = np.append(x_data, np.array([time]*len(particle_set)))
+            y_data = np.append(y_data, particle_set.particles[:, 0])
+            weights = np.append(weights, particle_set.weights)
+        ax.hist2d(x_data, y_data, weights=weights, cmap=self.party_to_mpl_colormap[party], cmin=10/len(self.particles[0]),
+                  bins=[np.array(self.times), np.linspace(0, 60, 1_000)])

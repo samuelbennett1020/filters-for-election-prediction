@@ -1,8 +1,8 @@
 import numpy as np
 
-from KF_Election.Utils import inv
-from KF_Election.Models.ProcessModels import ProcessModel
-from KF_Election.Models.ObservationsModels import ObservationModel
+from Utils.Utils import inv
+from Models.ProcessModels import ProcessModel
+from Models.ObservationsModels import ObservationModel
 
 
 class KalmanFilter:

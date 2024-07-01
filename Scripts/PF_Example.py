@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from KF_Election.Filters.ParticleSet import ParticleSet
-from KF_Election.Filters.SIRFilter import SIRParticleFilter
-from KF_Election.Models.ProcessModels import ConstantVelocityModel
-from KF_Election.Models.ObservationsModels import GaussianMeasModel
-from KF_Election.DataStore import ParticleDataStore
+from Filters.ParticleSet import ParticleSet
+from Filters.SIRFilter import SIRParticleFilter
+from Filters.Resamplers import StratifiedResampler
+from Models.ProcessModels import ConstantVelocityModel
+from Models.ObservationsModels import GaussianMeasModel
+from Utils.DataStore import ParticleDataStore
 
 
 def run_example_pf(N, iters=5):
@@ -15,7 +16,7 @@ def run_example_pf(N, iters=5):
     q = 0.005
     process_model = ConstantVelocityModel(q)
     obs_model = GaussianMeasModel(sensor_std_error)
-    pf = SIRParticleFilter()
+    pf = SIRParticleFilter(StratifiedResampler)
 
     particle_set = ParticleSet.create_gaussian_particles(true_state.flatten(), np.array([sensor_std_error, 0.5]), N)
     data_store = ParticleDataStore()

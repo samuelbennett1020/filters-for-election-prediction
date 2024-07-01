@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from KF_Election.DataStore import DataStore
-from KF_Election.Filters.KalmanFilter import KalmanFilter
-from KF_Election.Models.ProcessModels import ConstantVelocityModel
-from KF_Election.Models.ObservationsModels import GaussianMeasModel
-from KF_Election.Utils import read_election_data
+from Utils.DataStore import DataStore
+from Filters.KalmanFilter import KalmanFilter
+from Models.ProcessModels import ConstantVelocityModel
+from Models.ObservationsModels import GaussianMeasModel
+from Utils.Utils import read_election_data
 
 if __name__ == '__main__':
     fig, ax = plt.subplots()
