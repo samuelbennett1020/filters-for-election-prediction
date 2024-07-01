@@ -16,7 +16,7 @@ def run_example_pf(N, iters=5):
     q = 0.005
     process_model = ConstantVelocityModel(q)
     obs_model = GaussianMeasModel(sensor_std_error)
-    pf = SIRParticleFilter(StratifiedResampler)
+    pf = SIRParticleFilter(StratifiedResampler())
 
     particle_set = ParticleSet.create_gaussian_particles(true_state.flatten(), np.array([sensor_std_error, 0.5]), N)
     data_store = ParticleDataStore()

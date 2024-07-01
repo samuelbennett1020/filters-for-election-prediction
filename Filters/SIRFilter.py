@@ -8,7 +8,7 @@ from Filters.Resamplers import Resampler
 class SIRParticleFilter:
     # Sequential Importance Resampling Filter
 
-    def __init__(self, resampler: type(Resampler)):
+    def __init__(self, resampler: Resampler):
         self.resampler = resampler
 
     def predict(self, particles, dt, q):

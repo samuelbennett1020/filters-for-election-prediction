@@ -5,6 +5,9 @@ from datetime import datetime, date, timedelta
 import os
 
 
+pd.options.mode.chained_assignment = None  # default='warn'
+
+
 def inv(a: np.array) -> np.array:
     try:
         return np.linalg.inv(a)
@@ -14,6 +17,10 @@ def inv(a: np.array) -> np.array:
 
 def get_date_from_days_after(start: date, end: int):
     return start + timedelta(end)
+
+
+def get_dt_from_election_date(election_date, most_recent_ts: float):
+    return election_date.timestamp() / (60 * 60 * 24) - most_recent_ts
 
 
 def get_time_array(df):
@@ -34,13 +41,13 @@ def get_time_array(df):
     return time_array
 
 
-def read_election_data(party: str, data_type: str = None, year: str = None):
+def read_election_data(party: str, year: str = None):
     dirname = os.path.dirname(__file__)
 
-    if None in [data_type, year]:
-        fp = '../Data/NationalVotingIntention2019.csv'
+    if year is None:
+        fp = '../Data/NationalVotingIntention2019+.csv'
     else:
-        fp = f'../Data/{data_type}{year}.csv'
+        fp = f'../Data/NationalVotingIntention{year}.csv'
 
     filename = os.path.join(dirname, fp)
 
@@ -48,6 +55,7 @@ def read_election_data(party: str, data_type: str = None, year: str = None):
         df = pd.DataFrame(pd.read_csv(f))
 
     df_reduced = df[[party, 'Unnamed: 3']]
+    df_reduced.loc[df_reduced[party] == ' '] = np.nan
     df_reduced = df_reduced.dropna()
     party_data = np.array(df_reduced[party])
     time_array = get_time_array(df_reduced)
@@ -56,5 +64,7 @@ def read_election_data(party: str, data_type: str = None, year: str = None):
     ind = np.argsort(time_array)
     time_array = time_array[ind]
     party_data = party_data[ind]
+
+    party_data = party_data.astype(np.float16)
 
     return time_array, party_data

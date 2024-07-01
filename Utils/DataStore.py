@@ -17,12 +17,13 @@ class DataStore:
 
     party_col_map = {'Lab': RED, 'Con': BLUE, 'LD': ORANGE, 'Ukip': PURPLE, 'Green': GREEN, 'BXP/Reform': LIGHT_BLUE}
 
-    def __init__(self):
+    def __init__(self, label: str = None):
         self.gts = []
         self.states = []
         self.covs = []
         self.times = []
         self.measurements = []
+        self.label = label
 
     def add(self, gt, meas, state, cov, time):
         self.gts.append(deepcopy(gt))
@@ -76,15 +77,18 @@ class DataStore:
         if plot_params['plot_meas']:
             ax.scatter(self.times, [x[0] for x in self.measurements], color=RED, label='Measurements', marker='x')
 
+    def get_most_recent_estimate(self) -> (np.array, np.array):
+        return deepcopy(self.states[-1]), deepcopy(self.covs[-1])
+
 
 class ParticleDataStore(DataStore):
 
     party_to_mpl_colormap = {'Lab': 'Reds', 'Con': 'Blues', 'LD': 'Oranges',
                              'Ukip': 'Purples', 'Green': 'Greens', 'BXP/Reform': 'PuBu'}
 
-    def __init__(self):
+    def __init__(self, label: str = None):
         self.particles: [ParticleSet] = []
-        super().__init__()
+        super().__init__(label)
 
     def add(self, particles: ParticleSet, gt, meas, state, cov, time):
         super().add(gt, meas, state, cov, time)
@@ -150,3 +154,6 @@ class ParticleDataStore(DataStore):
             weights = np.append(weights, particle_set.weights)
         ax.hist2d(x_data, y_data, weights=weights, cmap=self.party_to_mpl_colormap[party], cmin=10/len(self.particles[0]),
                   bins=[np.array(self.times), np.linspace(0, 60, 1_000)])
+
+    def get_most_recent_particle_set(self) -> np.array:
+        return deepcopy(self.particles[-1])
