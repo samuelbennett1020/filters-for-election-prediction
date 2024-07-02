@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from Filters.ParticleSet import ParticleSet
+from Utils.Utils import get_dt_from_election_date
 
 # COLOURS
 RED = np.array([255, 0, 0]) / 255
@@ -56,6 +57,10 @@ class DataStore:
         ax.set_ylim(0)
 
         ax.set_ylabel('Vote Share')
+
+    def plot_result(self, ax, election, party):
+        ax.scatter([get_dt_from_election_date(election.election_date, 0)],
+                   [election.result[party]], marker='x', color=self.party_col_map[party])
 
     def plot(self, ax=None,
              plot_params: dict = {'plot_gt': False, 'plot_cov': True, 'plot_tracks': True, 'plot_meas': True}):

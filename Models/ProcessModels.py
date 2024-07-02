@@ -16,6 +16,7 @@ class ConstantVelocityModel(ProcessModel):
     def __init__(self, q):
         F = lambda t: np.array([[1., t], [0., 1.]])
         Q = lambda t: np.array([[(t**3)/3, (t**2)/2], [(t**2)/2, t]])*q
+        self.q = q
         super().__init__(F, Q)
 
     def process(self, true_state, dt):
