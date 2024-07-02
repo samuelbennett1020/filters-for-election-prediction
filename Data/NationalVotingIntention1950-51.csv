@@ -1,0 +1,36 @@
+Year,Month,Fieldwork,Date,Polling,Publisher,Con,,Lab,,LD,,Con lead,,,Leader:,Con good,Con bad,Con net,Lab good,Lab bad,Lab net,LD good,LD bad,LD net,Question,,Govt good,Govt bad,Govt net,Question
+1950,Mar,,,Gallup,News Chron,43.5,,45.5,,8.5,,-2.0,,,,,,,,,,,,,,,,,,
+,Apr,,,Gallup,News Chron,45.5,2.0,47.0,1.5,7.0,-1.5,-1.5,0.5,,,,,,,,,,,,,,,,,
+,May,,,Gallup,News Chron,43.5,-2.0,46.5,-0.5,9.5,2.5,-3.0,-1.5,,,,,,50.0,39.0,11.0,,,,Do you approve or disapprove of X as Y?,,39.0,51.0,-12.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Jun,,,Gallup,News Chron,43.5,0.0,46.0,-0.5,9.0,-0.5,-2.5,0.5,,,,,,,,,,,,,,,,,
+,Jul,,,Gallup,News Chron,42.0,-1.5,43.5,-2.5,11.0,2.0,-1.5,1.0,,,,,,,,,,,,,,,,,
+,Aug,,,Gallup,News Chron,44.5,2.5,46.0,2.5,8.5,-2.5,-1.5,0.0,,,,,,,,,,,,,,,,,
+,Sep,,,Gallup,News Chron,43.0,-1.5,45.5,-0.5,10.0,1.5,-2.5,-1.0,,,,,,49.0,43.0,6.0,,,,Do you approve or disapprove of X as Y?,,44.0,46.0,-2.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Oct,,,Gallup,News Chron,42.5,-0.5,45.0,-0.5,10.0,0.0,-2.5,0.0,,,,,,47.0,40.0,7.0,,,,Do you approve or disapprove of X as Y?,,45.0,45.0,0.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Oct,,,,DE,45.5,,45.5,,8.0,,0.0,,,,,,,,,,,,,,,,,,
+,Nov,,,Gallup,News Chron,,,,,,,,,Poll conducted but results lost by Gallup,,,,,,,,,,,,,,,,
+,Nov,,,,DE,47.0,1.5,45.0,-0.5,7.5,-0.5,2.0,2.0,,,,,,,,,,,,,,,,,
+,Dec,,,Gallup,News Chron,43.0,,44.0,,11.5,,-1.0,,,,,,,49.0,38.0,11.0,,,,Do you approve or disapprove of X as Y?,,38.0,51.0,-13.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Dec,,,,DE,47.5,0.5,44.5,-0.5,7.5,0.0,3.0,1.0,,,,,,,,,,,,,,,,,
+1951,Jan,,,Gallup,News Chron,51.0,8.0,38.0,-6.0,10.0,-1.5,13.0,14.0,,,,,,,,,,,,,,,,,
+,Jan,,,,DE,48.0,0.5,44.0,-0.5,7.0,-0.5,4.0,1.0,,,,,,,,,,,,,,,,,
+,Feb,,,,DE,50.5,2.5,40.5,-3.5,8.0,1.0,10.0,6.0,,,,,,,,,,,,,,,,,
+,Feb,,,Gallup,News Chron,51.5,0.5,37.5,-0.5,9.5,-0.5,14.0,1.0,,,,,,44.0,47.0,-3.0,,,,Do you approve or disapprove of X as Y?,,31.0,60.0,-29.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Feb,17-25,,,DE,52.0,1.5,39.5,-1.0,7.5,-0.5,12.5,2.5,,,,,,,,,,,,,,,,,
+,Mar,,,Gallup,News Chron,51.0,-0.5,36.5,-1.0,10.5,1.0,14.5,0.5,,,,,,,,,,,,,,,,,
+,Mar,3-10,,,DE,52.0,0.0,39.0,-0.5,8.0,0.5,13.0,0.5,,,,,,,,,,,,,,,,,
+,Apr,,,Gallup,News Chron,50.5,-0.5,38.5,2.0,9.0,-1.5,12.0,-2.5,,,,,,49.0,40.0,9.0,,,,Do you approve or disapprove of X as Y?,,32.0,59.0,-27.0,Are you satisfied or dissatisfied with the Government's record to date?
+,May,,,Gallup,News Chron,49.0,-1.5,40.0,1.5,9.5,0.5,9.0,-3.0,,,,,,57.0,35.0,22.0,,,,Do you approve or disapprove of X as Y?,,35.0,56.0,-21.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Jun,,,Gallup,News Chron,48.0,-1.0,41.0,1.0,10.0,0.5,7.0,-2.0,,,,,,,,,,,,,,,,,
+,Jul,,,Gallup,News Chron,49.0,1.0,39.0,-2.0,10.5,0.5,10.0,3.0,,,,,,,,,,,,,,,,,
+,Aug,,,Gallup,News Chron,50.5,1.5,38.0,-1.0,10.5,0.0,12.5,2.5,,,,,,43.0,43.0,0.0,,,,Do you approve or disapprove of X as Y?,,31.0,56.0,-25.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Sep,26,,Gallup,News Chron,52.0,1.5,41.0,3.0,6.5,-4.0,11.0,-1.5,,,,,,44.0,,,,,,Do you approve or disapprove of X as Y?,,35.0,54.0,-19.0,Are you satisfied or dissatisfied with the Government's record to date?
+,Oct,3,,Gallup,News Chron,50.5,-1.5,43.5,2.5,5.5,-1.0,7.0,-4.0,,,,,,,,,,,,,,,,,
+,Oct,10,,Gallup,News Chron,50.5,0.0,44.0,0.5,4.5,-1.0,6.5,-4.5,,,,,,,,,,,,,,,,,
+,,17,,Gallup,News Chron,50.0,-0.5,45.5,1.5,4.5,0.0,4.5,-2.5,,,,,,,,,,,,,,,,,
+,,19,,Gallup,,50.0,0.0,46.5,1.0,3.0,-1.5,3.5,-1.0,,,,,,,,,,,,,,,,,
+,,19,,Research Serv Ltd,Daily Graphic,50.0,,43.0,,6.7,,7.0,,,,,,,,,,,,,,,,,,
+,,19-23,,,DE,50.0,,46.0,,3.5,,4.0,,,,,,,,,,,,,,,,,,
+,,22,,Gallup,News Chron,49.5,,47.0,,3.0,,2.5,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,Result,,47.8,,49.4,,2.6,,-1.6,,,,,,,,,,,,,,,,,,
