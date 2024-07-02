@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 
-from Scripts.ElectionType import election_2005, election_2010, election_2015, election_2017, election_2019
-from Scripts.ElectionPredictor import KalmanElectionPredictor
+from ElectionPredictor.ElectionType import election_2005, election_2010, election_2015, election_2017, election_2019
+from ElectionPredictor.ElectionPredictor import KalmanElectionPredictor
 from Filters.KalmanFilter import KalmanFilter
-from Models.ProcessModels import ConstantVelocityModel, ConstantAccModel
+from Models.ProcessModels import ConstantAccModel
 from Models.ObservationsModels import GaussianMeasModel
 
 if __name__ == "__main__":

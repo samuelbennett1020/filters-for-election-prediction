@@ -13,10 +13,10 @@ def run_example_pf(N, iters=5):
     true_state = np.array([[0.5], [0.5]])
 
     sensor_std_error = 0.8
-    q = 0.005
+    q = 0.001
     process_model = ConstantVelocityModel(q)
     obs_model = GaussianMeasModel(sensor_std_error)
-    pf = SIRParticleFilter(StratifiedResampler())
+    pf = SIRParticleFilter(StratifiedResampler(), obs_model, process_model)
 
     particle_set = ParticleSet.create_gaussian_particles(true_state.flatten(), np.array([sensor_std_error, 0.5]), N)
     data_store = ParticleDataStore()
@@ -28,8 +28,8 @@ def run_example_pf(N, iters=5):
         true_state = process_model.process(true_state, dt)
         meas = obs_model.generate_obs(true_state)
 
-        pf.predict(particle_set.particles, dt, q)
-        pf.update(particle_set, z=meas, R=sensor_std_error)
+        pf.predict(particle_set.particles, dt)
+        pf.update(particle_set, z=meas)
 
         if particle_set.get_neff() < N / 2:  # resample if too few effective particles
             pf.resample(particle_set)

@@ -1,24 +1,30 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from datetime import datetime
 
 from Filters.ParticleSet import ParticleSet
 from Utils.DataStore import ParticleDataStore
 from Utils.Utils import read_election_data, get_dt_from_election_date
 from Utils.DataStore import DataStore
-from Scripts.ElectionType import Election
+from ElectionPredictor.ElectionType import Election
 
 
 class KalmanElectionPredictor:
+
+    stand_devs = 2.
+
     def __init__(self, estimator):
         self.estimator = estimator
         self.elections = []
         self.plot_params = {'plot_gt': False, 'plot_cov': True, 'plot_meas': False, 'plot_tracks': True}
 
+        print(f'Error is {self.stand_devs} sigma')
+
     def predict_election(self, election: Election):
         fig, ax = plt.subplots()
+        date = election.election_date.date()
+        fig.suptitle(f' Election {date}')
 
-        print(f'----------------------------Election: {election.election_date.date()}---------------------------------')
+        print(f'----------------------------Election: {date}---------------------------------')
 
         for party in election.parties:
             time_array, party_data = read_election_data(party, year=election.year)
@@ -41,8 +47,8 @@ class KalmanElectionPredictor:
     def predict_election_day(self, election: Election, most_recent_poll_ts: float, data_store, party: str):
         dt = get_dt_from_election_date(election.election_date, most_recent_poll_ts)
         x, P = self.estimator.predict(*data_store.get_most_recent_estimate(), dt)
-        print(f'{party}: Predicted: {np.round(x[0].item(0), 2)} +-',
-              f'{np.round(np.sqrt(P[0, 0]), 2)}; Actual {election.result[party]}')
+        print(f'{party}: {np.round(x[0].item(0), 2)} +-',
+              f'{np.round(self.stand_devs*np.sqrt(P[0, 0]), 2)}; Actual {election.result[party]}')
 
     def add_elections(self, *elections):
         for election in elections:
@@ -62,15 +68,18 @@ class PFElectionPredictor(KalmanElectionPredictor):
     def predict_election(self, election: Election):
 
         fig, ax = plt.subplots()
+        date = election.election_date.date()
+        fig.suptitle(f' Election {date}')
 
-        print(f'----------------------------Election: {election.election_date.date()}---------------------------------')
+        print(f'----------------------------Election: {date}---------------------------------')
 
         for party in election.parties:
 
             time_array, party_data = read_election_data(party, year=election.year)
 
+            sensor_std_error = self.estimator.observation_model.R[0, 0]  # TODO: refactor
             particle_set = ParticleSet.create_gaussian_particles(np.array([party_data[0], 0.]),
-                                                                 np.array([8., 10.]), self.num_particles)
+                                                                 np.array([sensor_std_error, 10.]), self.num_particles)
             data_store = ParticleDataStore()
 
             for idx, (time_step, data) in enumerate(zip(time_array[1:], party_data[1:])):
@@ -88,10 +97,12 @@ class PFElectionPredictor(KalmanElectionPredictor):
 
             self.predict_election_day(election, time_array[-1], data_store, party)
 
+            data_store.plot_result(ax, election, party)
+
     def predict_election_day(self, election: Election, most_recent_poll_ts: float, data_store, party: str):
         dt = get_dt_from_election_date(election.election_date, most_recent_poll_ts)
         particle_set = data_store.get_most_recent_particle_set()
         self.estimator.predict(particle_set.particles, dt)
         x, P = particle_set.get_estimate()
-        print(f'{party}: {np.round(x[0].item(0), 2)} +-', f'{np.round(np.sqrt(P[0]), 2)}',
+        print(f'{party}: {np.round(x[0].item(0), 2)} +-', f'{np.round(self.stand_devs*np.sqrt(P[0]), 2)}',
               f'Actual {election.result[party]}')

@@ -54,7 +54,7 @@ class DataStore:
         if plot_params['plot_meas']:
             ax.scatter(self.times, [x[0] for x in self.measurements], color=color)
 
-        ax.set_ylim(0)
+        ax.set_ylim(0, 60)
 
         ax.set_ylabel('Vote Share')
 
@@ -146,7 +146,7 @@ class ParticleDataStore(DataStore):
         if plot_params['plot_meas']:
             ax.scatter(self.times, [x[0] for x in self.measurements], color=color)
 
-        ax.set_ylim(0)
+        ax.set_ylim(0, 60)
 
         ax.set_ylabel('Vote Share')
 
