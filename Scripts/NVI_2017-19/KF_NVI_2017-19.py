@@ -8,6 +8,7 @@ from Models.ProcessModels import ConstantVelocityModel
 from Models.ObservationsModels import GaussianMeasModel
 from Utils.Utils import read_election_data, get_dt_from_election_date
 
+
 if __name__ == '__main__':
 
     year = '2017-19'
