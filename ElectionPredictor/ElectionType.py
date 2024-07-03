@@ -2,12 +2,15 @@ from datetime import datetime
 
 
 class Election:
-    def __init__(self, year: str, election_date: datetime, result: dict):
-        self.year: str = year
+    def __init__(self, year: str, election_date: datetime, result: dict | None):
+        self.year: str = year  # poll years
         self.election_date: datetime = election_date
         self.parties: tuple = tuple(result.keys())
         self.result: dict = result
 
+
+election_2024 = Election('2019_Latest', datetime(2024, 7, 12),
+                         {'Lab': None, 'Con': None, 'LD': None, 'BXP/Reform': None, 'Green': None})
 
 election_2019 = Election('2017-19', datetime(2019, 12, 12), {'Lab': 32.2, 'Con': 43.6, 'LD': 11.5})
 
