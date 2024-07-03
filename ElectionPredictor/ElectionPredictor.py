@@ -79,6 +79,9 @@ class KalmanElectionPredictor:
         for election in self.elections:
             self.predict_election(election)
 
+        if self.log_file is not None:
+            self.stop_log()
+
 
 class PFElectionPredictor(KalmanElectionPredictor):
 

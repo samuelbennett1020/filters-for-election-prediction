@@ -19,6 +19,5 @@ if __name__ == "__main__":
     election_predictor.add_elections(*[election_2005, election_2010, election_2015, election_2017, election_2019, election_2024])
 
     election_predictor.run()
-    election_predictor.stop_log()
     plt.show()
     plt.legend()

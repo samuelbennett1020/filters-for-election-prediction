@@ -16,10 +16,9 @@ if __name__ == "__main__":
     process_model = ConstantVelocityModel(0.001)
     pf = SIRParticleFilter(observation_model=obs_model, process_model=process_model, resampler=StratifiedResampler())
 
-    election_predictor = PFElectionPredictor(pf, num_particles=10_000, log_to_file=True)
+    election_predictor = PFElectionPredictor(pf, num_particles=10_000, log_to_file=False)
     election_predictor.add_elections(*[election_2005, election_2010, election_2015, election_2017, election_2019, election_2024])
 
     election_predictor.run()
-    election_predictor.stop_log()
     plt.legend()
     plt.show()
