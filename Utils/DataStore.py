@@ -62,6 +62,10 @@ class DataStore:
         ax.scatter([get_dt_from_election_date(election.election_date, 0)],
                    [election.result[party]], marker='x', color=self.party_col_map[party])
 
+    def plot_prediction(self, ax, election, party, pred):
+        ax.scatter([get_dt_from_election_date(election.election_date, 0)],
+                   [pred], marker='o', color=self.party_col_map[party])
+
     def plot(self, ax=None,
              plot_params: dict = {'plot_gt': False, 'plot_cov': True, 'plot_tracks': True, 'plot_meas': True}):
 

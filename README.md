@@ -18,4 +18,4 @@ Anthony Wells: https://yougov.co.uk/politics/articles/2497-understanding-margin-
 
 > A poll of 1,000 people has a margin of error of +/- 3%, a poll of 2,000 people a margin of error of +/- 2%
 
-As a conservative estimate, the $1 \sigma$ std error is given as 3%.
+Based on this, the $1 \sigma$ std error is given as 3%.
